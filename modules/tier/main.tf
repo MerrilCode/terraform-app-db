@@ -45,6 +45,7 @@ resource "aws_instance" "app-merril" {
   ami                     = "${var.ami_id}"
   instance_type           = "t2.micro"
   user_data               = "${var.user_data}"
+  count = "${var.machine_count}"
   subnet_id               = "${aws_subnet.app-merril.id}"
   vpc_security_group_ids  = ["${aws_security_group.app-merril.id}"]
   tags {
